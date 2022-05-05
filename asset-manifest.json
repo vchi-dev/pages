@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/vchi-dev.github.io/pages/static/css/main.073c9b0a.css",
-    "main.js": "/vchi-dev.github.io/pages/static/js/main.c65d07aa.js",
-    "static/js/787.364e939e.chunk.js": "/vchi-dev.github.io/pages/static/js/787.364e939e.chunk.js",
-    "static/media/logo.svg": "/vchi-dev.github.io/pages/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "index.html": "/vchi-dev.github.io/pages/index.html",
-    "main.073c9b0a.css.map": "/vchi-dev.github.io/pages/static/css/main.073c9b0a.css.map",
-    "main.c65d07aa.js.map": "/vchi-dev.github.io/pages/static/js/main.c65d07aa.js.map",
-    "787.364e939e.chunk.js.map": "/vchi-dev.github.io/pages/static/js/787.364e939e.chunk.js.map"
+    "main.css": "/pages/static/css/main.073c9b0a.css",
+    "main.js": "/pages/static/js/main.d191877c.js",
+    "static/js/787.364e939e.chunk.js": "/pages/static/js/787.364e939e.chunk.js",
+    "static/media/logo.svg": "/pages/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/pages/index.html",
+    "main.073c9b0a.css.map": "/pages/static/css/main.073c9b0a.css.map",
+    "main.d191877c.js.map": "/pages/static/js/main.d191877c.js.map",
+    "787.364e939e.chunk.js.map": "/pages/static/js/787.364e939e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.c65d07aa.js"
+    "static/js/main.d191877c.js"
   ]
 }
