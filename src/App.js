@@ -5,6 +5,7 @@ const weather_api = {
   key: "bad7b680058eadb2d456582593ec1fc2",
   base: "https://api.openweathermap.org/data/2.5/"
 }
+
 function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState('');
@@ -30,22 +31,37 @@ function App() {
   }
   return (
     <div className={(typeof weather.main != "undefined") ? ((weather.main.temp > 20) ? "app" : "app cool") : "app"}>
+      <nav className="navbar">
+            <div className="nav-list">
+                <div className="logo"><a href="#weather"><span>VC</span></a></div>
+                <ul className="menu">
+                    <li><a href="#weather">Weather</a></li>
+                    <li><a href="#time">Time</a></li>
+                    <li><a href="https://vchi-dev.github.io/">About</a></li>
+                    <li><img src={require("./assets/img/dark_light.png")} id="dark_light" alt="" /></li>
+                </ul>
+            </div>
+      </nav>
+      <div id="weather"></div>
       <main>
-        <div className="search-box">
-          <input type="text" className="search-bar" placeholder="Search..." onChange={e => setQuery(e.target.value)} value={query} onKeyPress={search} />
-        </div>
-        {(typeof weather.main != "undefined") ? (
-          <div>
-            <div className="location-box">
-              <div className="location">{weather.name}, {weather.sys.country}</div>
-              <div className="date">{dateBuilder(new Date())}</div>
-            </div>
-            <div className="weather-box">
-              <div className="temperature">{Math.round(weather.main.temp)}°C</div>
-              <div className="weather">{weather.weather[0].main}</div>
-            </div>
+        <div className="top-bar">
+          <div className="search-box">
+            <input type="text" className="search-bar" placeholder="Search..." onChange={e => setQuery(e.target.value)} value={query} onKeyPress={search} />
           </div>
-          ) : ('')}
+          {(typeof weather.main != "undefined") ? (
+            <div>
+              <div className="location-box">
+                <div className="location">{weather.name}, {weather.sys.country}</div>
+                <div className="date">{dateBuilder(new Date())}</div>
+              </div>
+              <div className="weather-box">
+                <div className="temperature">{Math.round(weather.main.temp)}°C</div>
+                <div className="weather">{weather.weather[0].main}</div>
+              </div>
+            </div>
+            ) : ('')}
+        </div>
+        <div className="empty-space" id="time"></div>
       </main>
       {/* <img src={logo} className="App-logo" alt="logo" /> */}
     </div>

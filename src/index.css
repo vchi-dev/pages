@@ -1,8 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&family=Work+Sans:wght@200;300;400;500;600;700&family=Titillium+Web:wght@300;400;600;700&family=Ubuntu:wght@300;400;500;700&display=swap');
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
 }
+
+/* Color Setup (Default, Light Theme) */
+:root {
+    --brand: indigo;
+    --text: black;
+    --blur-elements: rgba(245, 245, 245, 0.7);
+    --nav-list-hover: tomato;
+    --scroll-rest: black;
+    --scroll-hover: darkslategray;
+    --background-gradient: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.7));
+}
+.dark-theme {
+    --brand: mediumslateblue;
+    --text: ghostwhite;
+    --blur-elements: rgba(15, 15, 15, 0.8);
+    --nav-list-hover: springgreen;
+    --scroll-rest: gainsboro;
+    --scroll-hover: lightsteelblue;
+    --background-gradient: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+}
+.invert-color {
+    -webkit-filter: invert(1);
+    filter: invert(1);
+}
+
+/* Personal QOL */
+html {
+    scroll-behavior: smooth;
+}
+body {
+    overflow: overlay;
+}
+::-webkit-scrollbar {
+    width: 16px;
+}
+::-webkit-scrollbar-track {
+    box-shadow: 0 0 15px 15px transparent;
+    border: solid 4px transparent;
+}
+::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 15px 15px var(--scroll-rest);
+    border: solid 4px transparent;
+    border-radius: 100px;
+}
+::-webkit-scrollbar-thumb:hover {
+    box-shadow: inset 0 0 15px 15px var(--scroll-hover);
+}
+
+/* Backgrounds */
 .app {
   background-image: url('./assets/img/sunset.png');
   background-size: cover;
@@ -16,17 +69,110 @@ main {
   min-height: 100vh;
   padding: 25px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7))
+  background-image: var(--background-gradient);
+}
+
+/* Navbar */
+.blur {
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.navbar {
+  position: fixed;
+  width: 100%;
+  padding: 35px 0;
+  /* background: #202020; */
+  font-family: 'Ubuntu', sans-serif;
+  transition-property: padding, background, backdrop-filter, -webkit-backdrop-filter;
+  transition-duration: 0.25s, 0.25s, 0.25s, 0.25s;
+  transition-delay: 0s, 0.25s, 0.25s, 0.25s;
+  transition-timing-function: ease-out;
+  z-index: 1;
+}
+.navbar.sticky {
+  padding: 15px 0;
+  background: var(--blur-elements);
+}
+.navbar .nav-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-list {
+  max-width: 1800px;
+  padding: 0 50 px;
+  margin: auto 10%;
+}
+.navbar .logo a {
+  color: transparent;
+  font-size: 30px;
+  font-weight: 700;
+}
+.navbar .logo a span{
+  transition-delay: 0.25s;
+  transition-duration: all 0.25s ease-in-out;
+}
+.navbar.sticky .logo a span{
+  color: var(--brand);
+}
+.navbar .menu li {
+  list-style: none;
+  display: inline-block;
+}
+.navbar .menu li a {
+  color: var(--text);
+  font-family: "Work Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: 30px;
+  transition: color 0.25s ease-in-out;
+  position: relative;
+}
+.navbar .menu li a:hover {
+  color: var(--nav-list-hover);
+}
+.navbar .menu li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 3px;
+  background-color: var(--nav-list-hover);
+
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.25s ease-in;
+}
+.navbar .menu li a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+#dark_light {
+  top: 2px;
+  float: right;
+  margin-left: 30px;
+  height: 16px;
+  width: 16px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+}
+#dark_light:hover {
+  top: -2px;
 }
 
 /* Search-Box */
 .search-box {
   width: 100%;
+  /* min-width: 500px; */
   margin: 0 0 40px;
+  padding: 100px;
 }
 .search-box .search-bar {
   display: block;
   width: 100%;
+  /* min-width: 500px; */
   padding: 15px;
   border-radius: 100px;
 
@@ -36,7 +182,7 @@ main {
   outline: none;
 
   background-color: rgba(248, 248, 255, 0.7);
-  box-shadow: 2px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
   transition: 0.3s ease-in-out;
 }
@@ -46,13 +192,13 @@ main {
 
 /* Location-Box */
 .location-box .location {
-  color: white;
+  color: var(--text);
   font-size: 30px;
   font-weight: 500;
   text-align: center;
 }
 .location-box .date {
-  color: white;
+  color: var(--text);
   font-size: 20px;
   font-weight: 300;
   text-align: center;
@@ -69,13 +215,17 @@ main {
   background-color: rgba(248, 248, 255, 0.5);
   border-radius: 100px;
   padding: 30px;
-  color: white;
+  color: var(--text);
   font-size: 75px;
   font-weight: 700;
   text-align: center;
 }
 .weather-box .weather {
-  color: white;
+  color: var(--text);
   font-size: 50px;
   font-weight: 700;
+}
+
+.empty-space {
+  min-height: 1000px;
 }
