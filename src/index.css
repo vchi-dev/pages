@@ -167,7 +167,7 @@ main {
 .search-box {
   width: 100%;
   /* min-width: 500px; */
-  margin: 0 0 40px;
+  margin: 0 0 -20px;
   padding: 100px;
 }
 .search-box .search-bar {
@@ -191,8 +191,24 @@ main {
   background-color: ghostwhite;
 }
 
+/* Time-Box */
+.time-box {
+  margin: auto;
+  -webkit-box-reflect: below -20px linear-gradient(transparent, rgba(255, 255, 255, 0.2));
+}
+.time {
+  color: var(--text);
+  font-family: "Work Sans", sans-serif;
+  font-size: 70px;
+  font-weight: 600;
+  text-align: center;
+  /* padding-bottom: 100px; */
+  letter-spacing: 10px;
+}
+
 /* Location-Box */
 .location-box .location {
+  padding-top: 75px;
   color: var(--text);
   font-size: 30px;
   font-weight: 500;

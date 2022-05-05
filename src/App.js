@@ -1,5 +1,5 @@
-import React, {useState, setState} from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
+// import logo from './logo.svg';
 
 const weather_api = {
   key: "bad7b680058eadb2d456582593ec1fc2",
@@ -7,10 +7,18 @@ const weather_api = {
 }
 
 function App() {
-  const [query, setQuery] = useState('');
-  const [saved_query, setSavedQuery] = useState('');
-  const [weather, setWeather] = useState('');
-  const [scale, setScale] = useState('celsius');
+  const [query, setQuery] = useState(() => {
+    return '';
+  });
+  const [saved_query, setSavedQuery] = useState(() => {
+    return '';
+  });
+  const [weather, setWeather] = useState(() => {
+    return '';
+  });
+  const [scale, setScale] = useState(() => {
+    return 'celsius';
+  });
 
   const search = event => {
     if (event.key === "Enter") {
@@ -57,6 +65,31 @@ function App() {
     }
   }
 
+  function updateClock() {
+    var current_time = new Date();
+    var hour = current_time.getHours();
+    var minute = current_time.getMinutes();
+    var meridiem = "AM";
+    if (hour === 0) {
+      hour = 12;
+    }
+    else if (hour > 12) {
+      hour = hour - 12;
+      meridiem = "PM";
+    }
+    var ids = ["hour", "minute", "meridiem"];
+    var values = [hour, minute, meridiem];
+    // console.log(document.getElementById(ids[0]));
+    for (var i = 0; i < ids.length; i++) {
+      document.getElementById(ids[i]).firstChild.nodeValue = values[i];
+    }
+  }
+
+  window.onload = function initClock() {
+    updateClock();
+    window.setInterval(function() {updateClock();}, 1000);
+  }
+
   return (
     <div className={(typeof weather.main != "undefined") ? ((weather.main.temp > 20) ? "app" : "app cool") : "app"}>
       <nav className="navbar">
@@ -73,10 +106,19 @@ function App() {
       </nav>
       <div id="weather"></div>
       <main>
-        <div className="top-bar">
+        <div>
           <div className="search-box">
             <input type="text" className="search-bar" placeholder="Search..." onChange={e => setQuery(e.target.value)} value={query} onKeyPress={search} />
           </div>
+          {/* Clock */}
+          <div className="time-box">
+            <div className="time">
+              <span id="hour">00</span>:
+              <span id="minute">00</span>&nbsp;
+              <span id="meridiem">AM</span>
+            </div>
+          </div>
+          {/* Weather */}
           {(typeof weather.main != "undefined") ? (
             <div>
               <div className="location-box">
