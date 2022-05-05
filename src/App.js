@@ -8,13 +8,23 @@ const weather_api = {
 
 function App() {
   const [query, setQuery] = useState('');
+  const [saved_query, setSavedQuery] = useState('');
   const [weather, setWeather] = useState('');
+  const [scale, setScale] = useState('celsius');
 
   const search = event => {
     if (event.key === "Enter") {
-      fetch(`${weather_api.base}weather?q=${query}&units=metric&APPID=${weather_api.key}`).then(res => res.json()).then(result => {
-        setQuery('');
-        setWeather(result);});
+      setSavedQuery(query);
+      if (scale === "celsius") {
+        fetch(`${weather_api.base}weather?q=${query}&units=metric&APPID=${weather_api.key}`).then(res => res.json()).then(result => {
+          setQuery('');
+          setWeather(result);});
+      }
+      else {
+        fetch(`${weather_api.base}weather?q=${query}&units=imperial&APPID=${weather_api.key}`).then(res => res.json()).then(result => {
+          setQuery('');
+          setWeather(result);});
+      }
     }
   }
 
@@ -29,15 +39,34 @@ function App() {
 
     return `${day} ${date} ${month} ${year}`;
   }
+
+  function changeScale() {
+    if (scale === 'celsius') {
+      setScale('fahrenheit');
+      if (typeof weather.main != "undefined") {
+        fetch(`${weather_api.base}weather?q=${saved_query}&units=imperial&APPID=${weather_api.key}`).then(res => res.json()).then(result => {
+          setWeather(result);});
+      }
+    }
+    else {
+      setScale('celsius');
+      if (typeof weather.main != "undefined") {
+        fetch(`${weather_api.base}weather?q=${saved_query}&units=metric&APPID=${weather_api.key}`).then(res => res.json()).then(result => {
+          setWeather(result);});
+      }
+    }
+  }
+
   return (
     <div className={(typeof weather.main != "undefined") ? ((weather.main.temp > 20) ? "app" : "app cool") : "app"}>
       <nav className="navbar">
             <div className="nav-list">
-                <div className="logo"><a href="#weather"><span>VC</span></a></div>
+                <div className="logo"><a href="#weather"><span>Pages</span></a></div>
                 <ul className="menu">
+                    <li><a href="https://vchi-dev.github.io/">About</a></li>
                     <li><a href="#weather">Weather</a></li>
                     <li><a href="#time">Time</a></li>
-                    <li><a href="https://vchi-dev.github.io/">About</a></li>
+                    <li><a href="#weather" onClick={changeScale}>°{(scale === 'celsius') ? "C" : "F"}</a></li>
                     <li><img src={require("./assets/img/dark_light.png")} id="dark_light" alt="" /></li>
                 </ul>
             </div>
@@ -55,7 +84,7 @@ function App() {
                 <div className="date">{dateBuilder(new Date())}</div>
               </div>
               <div className="weather-box">
-                <div className="temperature">{Math.round(weather.main.temp)}°C</div>
+                <div className="temperature">{Math.round(weather.main.temp)}°{(scale === 'celsius') ? "C" : "F"}</div>
                 <div className="weather">{weather.weather[0].main}</div>
               </div>
             </div>
