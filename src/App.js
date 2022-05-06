@@ -94,7 +94,7 @@ function App() {
   }
 
   return (
-    <div className={(typeof weather.main != "undefined") ? ((weather.main.temp > 20) ? "app" : "app cool") : "app"}>
+    <div className={(scale === "celsius") ? ((typeof weather.main != "undefined") ? ((weather.main.temp > 15) ? "app" : "app cool") : "app") : ((typeof weather.main != "undefined") ? ((weather.main.temp > 59) ? "app" : "app cool") : "app")}>
       <nav className="navbar">
             <div className="nav-list">
                 <div className="logo"><a href="#weather"><span>Pages</span></a></div>
