@@ -77,6 +77,9 @@ function App() {
       hour = hour - 12;
       meridiem = "PM";
     }
+    if (minute < 10) {
+      minute = ('0' + minute).slice(-2);
+    }
     var ids = ["hour", "minute", "meridiem"];
     var values = [hour, minute, meridiem];
     // console.log(document.getElementById(ids[0]));
