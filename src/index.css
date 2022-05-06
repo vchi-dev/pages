@@ -60,6 +60,7 @@ body {
   background-image: url('./assets/img/sunset.png');
   background-size: cover;
   background-position: bottom;
+  background-attachment: fixed;
   transition: all 0.4s ease-out;
 }
 .app.cool {
