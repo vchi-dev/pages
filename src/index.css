@@ -94,6 +94,7 @@ main {
 .navbar.sticky {
   padding: 15px 0;
   background: var(--blur-elements);
+  transition: all 0.25s ease-in;
 }
 .navbar .nav-list {
   display: flex;
@@ -116,6 +117,7 @@ main {
 }
 .navbar.sticky .logo a span{
   color: var(--brand);
+  transition: all 0.25s ease-in;
 }
 .navbar .menu li {
   list-style: none;
@@ -127,11 +129,12 @@ main {
   font-size: 16px;
   font-weight: 600;
   margin-left: 30px;
-  transition: color 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
   position: relative;
 }
 .navbar .menu li a:hover {
   color: var(--nav-list-hover);
+  transition: all 0.25s ease-in;
 }
 .navbar .menu li a::after {
   content: "";
@@ -158,7 +161,7 @@ main {
   width: 16px;
   position: relative;
   cursor: pointer;
-  transition: all 0.3s ease-in;
+  transition: all 0.25s ease-in;
 }
 #dark_light:hover {
   top: -2px;
@@ -186,7 +189,7 @@ main {
   background-color: rgba(248, 248, 255, 0.7);
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
-  transition: 0.3s ease-in-out;
+  transition: all 0.25s ease-in;
 }
 .search-box .search-bar:focus {
   background-color: ghostwhite;
@@ -205,6 +208,7 @@ main {
   text-align: center;
   /* padding-bottom: 100px; */
   letter-spacing: 10px;
+  transition: all 0.25s ease-in;
 }
 
 /* Location-Box */
@@ -214,12 +218,14 @@ main {
   font-size: 30px;
   font-weight: 500;
   text-align: center;
+  transition: all 0.25s ease-in;
 }
 .location-box .date {
   color: var(--text);
   font-size: 20px;
   font-weight: 300;
   text-align: center;
+  transition: all 0.25s ease-in;
 }
 
 /* Weather-Box */
@@ -237,11 +243,13 @@ main {
   font-size: 75px;
   font-weight: 700;
   text-align: center;
+  transition: all 0.25s ease-in;
 }
 .weather-box .weather {
   color: var(--text);
   font-size: 50px;
   font-weight: 700;
+  transition: all 0.25s ease-in;
 }
 
 .empty-space {
