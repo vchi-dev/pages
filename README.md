@@ -1,3 +1,20 @@
+## Pages
+A productivity-driven React.js application that has time and weather functionality.\
+Hi there! 👋 This is Pages, a web application I wanted to make for productivity.\
+You can visit it at: <a href="https://vchi-dev.github.io/pages/">vchi-dev.github.io/pages</a>
+<br />
+
+This website was built from scratch with my sense of design. Feel free to leave feedback or suggestions on my email.
+<br />
+
+### Important: Please do not copy, reuse, or redistribute my code or design elements. I worked very hard putting all of this together and I want it to be recognized that this is my work.
+If you have questions or concerns, feel free to contact me at my email.\
+My Email: vchi.dev@proto.me
+
+Thank You (● ◡ ●)
+
+If you want to run it with React:
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
