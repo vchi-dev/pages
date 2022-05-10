@@ -45,7 +45,7 @@ function App() {
     let month = months[d.getMonth()];
     let year = d.getFullYear();
 
-    return `${day} ${date} ${month} ${year}`;
+    return `${day}, ${month} ${date}, ${year}`;
   }
 
   function changeScale() {
@@ -107,34 +107,35 @@ function App() {
                 </ul>
             </div>
       </nav>
-      <div id="weather"></div>
       <main>
-        <div>
-          <div className="search-box">
-            <input type="text" className="search-bar" placeholder="Search..." onChange={e => setQuery(e.target.value)} value={query} onKeyPress={search} />
-          </div>
-          {/* Clock */}
-          <div className="time-box">
-            <div className="time">
-              <span id="hour">00</span>:
-              <span id="minute">00</span>&nbsp;
-              <span id="meridiem">AM</span>
-            </div>
-          </div>
+        <div className="second-nav">
+          <input type="text" className="search-bar" placeholder="Search Your City's Weather..." onChange={e => setQuery(e.target.value)} value={query} onKeyPress={search} />
           {/* Weather */}
           {(typeof weather.main != "undefined") ? (
             <div>
-              <div className="location-box">
-                <div className="location">{weather.name}, {weather.sys.country}</div>
-                <div className="date">{dateBuilder(new Date())}</div>
-              </div>
               <div className="weather-box">
                 <div className="temperature">{Math.round(weather.main.temp)}°{(scale === 'celsius') ? "C" : "F"}</div>
                 <div className="weather">{weather.weather[0].main}</div>
               </div>
             </div>
-            ) : ('')}
+            ) : (
+              <div>
+                <div className="weather-box">
+                  <div className="temperature">--</div>
+                  <div className="weather">Input</div>
+                </div>
+              </div>
+            )}
+          {/* Clock */}
+          <div className="time-box">
+            <div className="time">
+              <span id="hour">00</span>:
+              <span id="minute">00</span>
+              <span id="meridiem">AM</span>
+            </div>
+          </div>
         </div>
+        <div className="date">{dateBuilder(new Date())}</div>
         <div className="empty-space" id="time"></div>
       </main>
       {/* <img src={logo} className="App-logo" alt="logo" /> */}
