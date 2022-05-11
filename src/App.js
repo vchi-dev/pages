@@ -96,14 +96,12 @@ function App() {
   return (
     <div className={(scale === "celsius") ? ((typeof weather.main != "undefined") ? ((weather.main.temp > 15) ? "app" : "app cool") : "app") : ((typeof weather.main != "undefined") ? ((weather.main.temp > 59) ? "app" : "app cool") : "app")}>
       <nav className="navbar">
-            <div className="nav-list">
+            <div class="nav-list">
                 <div className="logo"><a href="#weather"><span>Pages</span></a></div>
-                <ul className="menu">
+                <ul class="menu">
                     <li><a href="https://vchi-dev.github.io/">About</a></li>
-                    <li><a href="#weather">Weather</a></li>
-                    <li><a href="#time">Time</a></li>
                     <li><a href="#weather" onClick={changeScale}>°{(scale === 'celsius') ? "C" : "F"}</a></li>
-                    <li><img src={require("./assets/img/dark_light.png")} id="dark_light" alt="" /></li>
+                    <li><span class="material-icons md-dark" id="dark-mode">light_mode</span></li>
                 </ul>
             </div>
       </nav>
