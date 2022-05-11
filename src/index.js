@@ -7,47 +7,47 @@ import $ from 'jquery';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+	<React.StrictMode>
+		<App />
+	</React.StrictMode>
 );
 
-$(document).ready(function() {
-  // When scrolling, bring the navbar in and out of view.
-  // Add blur to navbar.
-  $(window).scroll(function() {
-      if (this.scrollY > 25) {
-          $('.navbar').addClass("sticky");
-          $('.navbar').addClass("blur");
-      }
-      else {
-          $('.navbar').removeClass("sticky");
-          $('.navbar').removeClass("blur");
-      }
-  })
-  
-  // Dark and Light theme
-  var darktheme = document.getElementById("dark-mode").onclick = function() {
-      // Makes all the colors change.
-      document.body.classList.toggle("dark-theme");
+$(document).ready(function () {
+	// When scrolling, bring the navbar in and out of view.
+	// Add blur to navbar.
+	$(window).scroll(function () {
+		if (this.scrollY > 25) {
+			$('.navbar').addClass("sticky");
+			$('.navbar').addClass("blur");
+		}
+		else {
+			$('.navbar').removeClass("sticky");
+			$('.navbar').removeClass("blur");
+		}
+	})
 
-      // Change all icons from light to dark, vice versa.
-      $('.material-icons').toggleClass("md-dark");
-      $('.material-icons').toggleClass("md-light");
+	// Dark and Light theme
+	var darktheme = document.getElementById("dark-mode").onclick = function () {
+		// Makes all the colors change.
+		document.body.classList.toggle("dark-theme");
 
-      // Changes the moon to the sun.
-      var darkicon = document.getElementById("dark-mode");
-      if (darkicon.innerHTML === "dark_mode") {
-          darkicon.innerHTML = "light_mode";
-      }
-      else {
-          darkicon.innerHTML = "dark_mode";
-      }
+		// Change all icons from light to dark, vice versa.
+		$('.material-icons').toggleClass("md-dark");
+		$('.material-icons').toggleClass("md-light");
 
-      // Changes the color of the rest of the icons.
-      $('.dark-icons').toggleClass("invert-color");
-      $('.dark-icons-body').toggleClass("invert-color");
-  }
+		// Changes the moon to the sun.
+		var darkicon = document.getElementById("dark-mode");
+		if (darkicon.innerHTML === "dark_mode") {
+			darkicon.innerHTML = "light_mode";
+		}
+		else {
+			darkicon.innerHTML = "dark_mode";
+		}
+
+		// Changes the color of the rest of the icons.
+		$('.dark-icons').toggleClass("invert-color");
+		$('.dark-icons-body').toggleClass("invert-color");
+	}
 });
 
 // If you want to start measuring performance in your app, pass a function
