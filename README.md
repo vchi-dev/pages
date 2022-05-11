@@ -13,7 +13,7 @@ My Email: vchi.dev@proto.me
 
 Thank You (● ◡ ●)
 
-If you want to run it with React:
+If you want to run it locally yourself:
 
 # Getting Started with Create React App
 
